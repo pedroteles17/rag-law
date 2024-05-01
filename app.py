@@ -19,6 +19,6 @@ for msg in st.session_state.messages:
 if prompt := st.chat_input():
     st.session_state.messages.append({"role": "user", "content": prompt})
     st.chat_message("user").write(prompt)
-    msg = st.session_state.query_engine.invoke({"input": prompt})
+    msg = st.session_state.query_engine.invoke({"input": prompt})["answer"]
     st.session_state.messages.append({"role": "assistant", "content": msg})
     st.chat_message("assistant").write(msg)
